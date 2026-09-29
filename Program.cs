@@ -1,4 +1,5 @@
 using EquipmentRental.Api.Data;
+using EquipmentRental.Api.Endpoints;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,9 +9,7 @@ builder.Services.AddDbContext<AppDbContext>(
 
 
 var app = builder.Build();
-
-
-app.MapGet("/", () => "Hello World!");
+EquipmentEndpoints.MapEquipment(app);
 
 
 app.Run();
