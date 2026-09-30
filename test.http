@@ -1,0 +1,22 @@
+﻿GET http://localhost:5033/equipment 
+
+###
+
+POST http://localhost:5033/equipment
+Content-Type: application/json
+
+{
+  "Name": "skis",
+  "Category": "snow",
+  "DailyPrice": 9999,
+  "IsAvailable": true
+}
+
+### Rejestracja nowego użytkownika
+POST http://localhost:5033/register
+Content-Type: application/json
+
+{
+  "email": "jan.kowalski@example.com",
+  "password": "Haslo123!"
+}

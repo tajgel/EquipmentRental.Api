@@ -10,8 +10,9 @@ public class EquipmentEndpoints
 {
     public static void MapEquipment(WebApplication app)
     {
-        app.MapGet("/equipment", async (AppDbContext dbContext) =>
+        app.MapGet("/equipment", async (AppDbContext dbContext, ClaimsPrincipal user) =>
         {
+
             var itemki = await dbContext.Equipments.Select(item => new EquipmentGetDtos(
                 Id: item.Id,
                 Name: item.Name,
@@ -19,7 +20,22 @@ public class EquipmentEndpoints
                 DailyPrice: item.DailyPrice,
                 IsAvailable: item.IsAvailable
             )).ToListAsync();
+
             return Results.Ok(itemki);
+        }).RequireAuthorization();
+        app.MapPost("/equipment", async (EquipmentPostDto item, AppDbContext dbContext) =>
+        {
+            dbContext.Equipments.AddAsync(
+                new Equipment
+                {
+                    Name = item.Name,
+                    Category = item.Category,
+                    DailyPrice = item.DailyPrice,
+                    IsAvailable = item.IsAvailable
+                }
+            );
+            await dbContext.SaveChangesAsync();
+            return Results.Created();
         });
     }
 }
