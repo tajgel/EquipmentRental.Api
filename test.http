@@ -20,3 +20,24 @@ Content-Type: application/json
   "email": "jan.kowalski@example.com",
   "password": "Haslo123!"
 }
+
+### Logowanie
+POST http://localhost:5033/login
+Content-Type: application/json
+
+{
+  "email": "jan.kowalski@example.com",
+  "password": "Haslo123!"
+}
+
+### Dodawanie sprzętu (Wymaga autoryzacji)
+POST http://localhost:5033/equipment
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjEiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJqYW4ua293YWxza2lAZXhhbXBsZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJVc2VyIiwiZXhwIjoxNzkxMDYwMDg1LCJpc3MiOiJFcXVpcG1lbnRSZW50YWxBcGkiLCJhdWQiOiJFcXVpcG1lbnRSZW50YWxVc2VycyJ9.Ry5kButg-lyTE37PiJmPjysa3OKKzmsOTjqsTN_gaM0
+
+{
+  "name": "Wiertarka Bosch",
+  "category": "Elektronarzędzia",
+  "dailyPrice": 45.00,
+  "isAvailable": true
+}

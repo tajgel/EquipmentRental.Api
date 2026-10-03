@@ -36,6 +36,6 @@ public class EquipmentEndpoints
             );
             await dbContext.SaveChangesAsync();
             return Results.Created();
-        });
+        }).RequireAuthorization();
     }
 }
